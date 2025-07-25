@@ -46,50 +46,12 @@
 		}
 	}
 
-	@media (max-width: 768px) {
-		#filters {
-			justify-content: center;
-		}
-
+	@media (max-width: 1025px) {
 		.filter {
-			margin-right: 1rem;
-			margin-top: 1rem;
-			flex: 1 1 30%; /* 3 per row roughly */
-		}
-
-		.filter p {
-			font-size: 0.7rem;
-		}
-
-		.tax-toggle {
-			width: 100%;
-			text-align: center;
-			margin-top: 1.5rem;
-			justify-content: center;
+			display: none;
 		}
 	}
 
-	@media (max-width: 480px) {
-		#filters {
-			flex-direction: column;
-			align-items: center;
-		}
-		.filter {
-			flex: 1 1 90%;
-			margin: 0.5rem 0;
-		}
-
-		.filter p {
-			font-size: 0.65rem;
-			text-align: center;
-		}
-
-		.tax-toggle {
-			width: 90%;
-			margin-top: 1rem;
-			padding: 0.5rem;
-		}
-	}
 
 </style>
 
@@ -147,7 +109,7 @@
 	  role="switch" 
 	  id="switchCheckDefault">
 	<label class="form-check-label" for="switchCheckDefault">
-		Display Total after taxes
+		Display taxes
 	</label>
 	</div>
   </div>

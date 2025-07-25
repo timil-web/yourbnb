@@ -1,0 +1,18 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container py-5 text-center">
+  <h1 class="display-4 mb-4">Welcome to <span class="text-primary">Wanderlust</span></h1>
+  <p class="lead mb-5">Discover and share beautiful places around the world.</p>
+
+  <div class="d-flex flex-column flex-md-row justify-content-center gap-3 mb-4">
+    <% if (!currUser) { %>
+      <a href="/login" class="btn btn-primary btn-lg">Login</a>
+      <a href="/register" class="btn btn-outline-primary btn-lg">Sign Up</a>
+    <% } else { %>
+      <a href="/listings" class="btn btn-success btn-lg">Explore Listings</a>
+      <a href="/logout" class="btn btn-danger btn-lg">Logout</a>
+    <% } %>
+  </div>
+
+  <a href="/listings" class="btn btn-secondary btn-sm">Continue as Guest</a>
+</div>

@@ -94,7 +94,9 @@ app.use((req,res,next) => {
 //   let registerUser = await User.register(fakeUser,"helloworld"); // pass = helloworld
 //   res.send(registerUser);
 // })
-
+app.get("/", (req, res) => {
+  res.render("home"); // will render views/home.ejs
+});
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
 app.use("/", userRouter);

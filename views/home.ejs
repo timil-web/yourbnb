@@ -1,47 +1,5 @@
 <% layout("/layouts/boilerplate") %>
 
-<style>
-  .hero-section {
-    background-color: white;
-    min-height: 70vh;
-    display: flex;
-    align-items: center;
-  }
-  
-  .text-gradient {
-    background: linear-gradient(90deg, #3b82f6, #10b981);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-  
-  .max-w-700 {
-    max-width: 700px;
-  }
-  
-  .rounded-pill {
-    transition: all 0.3s ease;
-  }
-  
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
-  }
-  
-  .btn-success:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
-  }
-  .login-box {
-    max-width: 500px;
-    margin: 30px auto;
-    background-color: #f8f9fa; /* Light gray background */
-    border: 1px solid #dee2e6;  /* Light border */
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
-  }
-</style>
-
 <div class="container-fluid hero-section">
   <div class="container py-5 text-center">
     <!-- Hero Section with improved typography -->
@@ -52,10 +10,10 @@
     <p class="lead mb-3 fs-4 text-muted max-w-700 mx-auto">
       Join our community of travelers sharing their favorite destinations and hidden gems.
     </p>
-    
-    <div class="border rounded-3 col-4 offset-4 login-box p-4" >
+    <% if (!currUser) { %>
+    <div class="border rounded-3 col-4 offset-4 login-box p-4 homeLoginBox" >
       <!-- Improved CTA buttons with hover effects -->
-      <% if (!currUser) { %>
+      
       <div >
         <form action="/login" method="POST" class="needs-validation" novalidate>
           <div class="mb-3">
@@ -88,24 +46,20 @@
           <button class="btn btn-success">Login</button>
         </form>
       </div>
-      <% } %>
+      
       <div class="d-flex flex-column flex-md-row justify-content-center mt-1">
-        <% if (!currUser) { %>
           <a href="/signup" class="btn btn-light btn-lg px-4 py-3 rounded-pill shadow-sm">
             <i class="bi bi-person-plus me-2"></i>Sign Up
           </a>
-        <% } %>
       </div>
 
-      <!-- Guest option with subtle styling -->
-      <% if (!currUser) { %> 
       <div class="mt-2">
         <a href="/listings" class="text-decoration-none text-muted small">
           <i class="bi bi-arrow-right-circle me-1"></i>Continue as Guest
         </a>
       </div>
-      <% } %>
     </div>
+    <% } %>
     
       <% if (currUser) { %> 
         <a href="/listings" class="btn btn-success btn-lg px-4 py-3 rounded-pill shadow-sm">

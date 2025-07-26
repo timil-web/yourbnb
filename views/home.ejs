@@ -1,18 +1,75 @@
 <% layout("/layouts/boilerplate") %>
 
-<div class="container py-5 text-center">
-  <h1 class="display-4 mb-4">Welcome to <span class="text-primary">Wanderlust</span></h1>
-  <p class="lead mb-5">Discover and share beautiful places around the world.</p>
 
-  <div class="d-flex flex-column flex-md-row justify-content-center gap-3 mb-4">
-    <% if (!currUser) { %>
-      <a href="/login" class="btn btn-primary btn-lg">Login</a>
-      <a href="/register" class="btn btn-outline-primary btn-lg">Sign Up</a>
-    <% } else { %>
-      <a href="/listings" class="btn btn-success btn-lg">Explore Listings</a>
-      <a href="/logout" class="btn btn-danger btn-lg">Logout</a>
-    <% } %>
+<style>
+  .hero-section {
+    background-color: white;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  .text-gradient {
+    background: linear-gradient(90deg, #3b82f6, #10b981);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .max-w-700 {
+    max-width: 700px;
+  }
+  
+  .rounded-pill {
+    transition: all 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+  }
+  
+  .btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+  }
+</style>
+
+<div class="container-fluid hero-section">
+  <div class="container py-5 text-center">
+    <!-- Hero Section with improved typography -->
+    <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeIn">
+      Discover <span class="text-gradient">Beautiful Places</span> Around the World
+    </h1>
+    
+    <p class="lead mb-5 fs-4 text-muted max-w-700 mx-auto">
+      Join our community of travelers sharing their favorite destinations and hidden gems.
+    </p>
+
+    <!-- Improved CTA buttons with hover effects -->
+    <div class="d-flex flex-column flex-md-row justify-content-center gap-3 mb-5">
+      <% if (!currUser) { %>
+        <a href="/login" class="btn btn-primary btn-lg px-4 py-3 rounded-pill shadow-sm">
+          <i class="bi bi-box-arrow-in-right me-2"></i>Login
+        </a>
+        <a href="/register" class="btn btn-light btn-lg px-4 py-3 rounded-pill shadow-sm">
+          <i class="bi bi-person-plus me-2"></i>Sign Up
+        </a>
+      <% } else { %>
+        <a href="/listings" class="btn btn-success btn-lg px-4 py-3 rounded-pill shadow-sm">
+          <i class="bi bi-compass me-2"></i>Explore Listings
+        </a>
+        <a href="/logout" class="btn btn-outline-danger btn-lg px-4 py-3 rounded-pill">
+          <i class="bi bi-box-arrow-left me-2"></i>Logout
+        </a>
+      <% } %>
+    </div>
+
+    <!-- Guest option with subtle styling -->
+    <div class="mt-4">
+      <a href="/listings" class="text-decoration-none text-muted small">
+        <i class="bi bi-arrow-right-circle me-1"></i>Continue as Guest
+      </a>
+    </div>
   </div>
-
-  <a href="/listings" class="btn btn-secondary btn-sm">Continue as Guest</a>
 </div>

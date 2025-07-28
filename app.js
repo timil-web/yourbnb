@@ -20,6 +20,8 @@ const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js")
 const userRouter = require("./routes/user.js")
 const homeRouter = require("./routes/home.js");
+const termsRouter = require("./routes/terms.js");
+const privacyRouter = require("./routes/privacy.js");
 
 // const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 const dbUrl = process.env.ATLASDB_URL || "mongodb://127.0.0.1:27017/your-local-db";
@@ -96,6 +98,8 @@ app.use((req,res,next) => {
 //   res.send(registerUser);
 // })
 app.use("/", homeRouter);
+app.use("/terms", termsRouter);
+app.use("/privacy", privacyRouter);
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
 app.use("/", userRouter);

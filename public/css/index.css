@@ -1,25 +1,101 @@
-/* a{
-	text-decoration: none;
-	color: black;
-} */
-/* #filters{
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: #f7f7f7;
+  padding: 10px;
 }
-.filter{
-	text-align: center;
-	margin-right: 2rem;
-	margin-top: 2rem;
-	opacity: 0.7;
+
+#filters {
+  max-width: 60vw;
+  margin: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: relative;
 }
-.filter:hover{
-	opacity: 1;
-	cursor: pointer;
+
+.slider-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
-.filter p{
-	font-size: 0.8rem;
+
+.slider-container {
+  overflow: hidden;
+  flex: 1;
 }
+
+.filters-track {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.3s ease;
+}
+
+.filter {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 16px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  min-width: 80px;
+  flex-shrink: 0;
+  border: 2px solid transparent;
+}
+
+.filter:hover {
+  background: #f7f7f7;
+  transform: translateY(-2px);
+}
+
+.filter.active {
+  border-color: #222;
+}
+
+.filter div {
+  font-size: 14px;
+  color: #717171;
+}
+
+.filter p {
+  font-size: 12px;
+  font-weight: 500;
+  color: #222;
+  white-space: nowrap;
+}
+
+.slider-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.slider-btn:hover:not(:disabled) {
+  border-color: #222;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.slider-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.slider-btn i {
+  font-size: 14px;
+  color: #222;
+}
+
+
 .tax-toggle{
 	border: 1px solid black;
 	border-radius: 1rem;
@@ -32,118 +108,26 @@
 .tax-info{
 	display: none;
 }
-@media (max-width: 1024px) {
-	#filters {
-		flex-wrap: wrap;
-		justify-content: space-evenly;
-	}
-	.filter {
-		flex: 1 1 10%;
-		margin: 1rem;
-	}
-}
 
 @media (max-width: 800px) {
-	.filter {
-		display: none;
+	#row {
+		display: flex;
+    flex-direction: column;
 	}
-} */
+  #filters{
+    max-width: 100%;
+  }
+  .slider-wrapper {
+    gap: 5px;
+  }
+  .filters-track {
+    gap: 5px;
+  }
+  .filter div {
+    font-size: 10px;
+  }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background: #f7f7f7;
-      padding: 10px;
-    }
-
-    #filters {
-      max-width: 1200px;
-      margin: 0 auto;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      position: relative;
-    }
-
-    .slider-wrapper {
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .slider-container {
-      overflow: hidden;
-      flex: 1;
-    }
-
-    .filters-track {
-      display: flex;
-      gap: 20px;
-      transition: transform 0.3s ease;
-    }
-
-    .filter {
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      padding: 5px 16px;
-      border-radius: 12px;
-      transition: all 0.2s ease;
-      min-width: 80px;
-      flex-shrink: 0;
-      border: 2px solid transparent;
-    }
-
-    .filter:hover {
-      background: #f7f7f7;
-      transform: translateY(-2px);
-    }
-
-    .filter.active {
-      border-color: #222;
-    }
-
-    .filter div {
-      font-size: 14px;
-      color: #717171;
-    }
-
-    .filter p {
-      font-size: 12px;
-      font-weight: 500;
-      color: #222;
-      white-space: nowrap;
-    }
-
-    .slider-btn {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      border: 1px solid #ddd;
-      background: white;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s ease;
-      flex-shrink: 0;
-    }
-
-    .slider-btn:hover:not(:disabled) {
-      border-color: #222;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    }
-
-    .slider-btn:disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
-    }
-
-    .slider-btn i {
-      font-size: 14px;
-      color: #222;
-    }
-
-    
+  .filter p {
+    font-size: 10px;
+  }
+} 

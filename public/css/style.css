@@ -12,12 +12,12 @@ body{
 /* navbar */
 .navbar{
 	background-color: white;
-	height: 5rem;
+	height: 4rem;
 }
 
 .fa-compass{
 	color: #fe424d;
-	font-size: 2rem;
+	font-size: 1.7rem;
 }
 
 .nav-link{

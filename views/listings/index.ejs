@@ -1,6 +1,6 @@
 <% layout("/layouts/boilerplate") %>
 
-<div id="filters" class="container-fluid">
+<!-- <div id="filters" class="container-fluid">
   <a href="/listings/category/Trending" class="filter">
 	<div><i class="fa-solid fa-fire"></i></div>
 	<p>Trending</p>
@@ -59,7 +59,71 @@
 	</div>
   </div>
 
+</div> -->
+
+
+<div id="filters" class="container-fluid">
+  <div class="slider-wrapper">
+    <button class="slider-btn" id="prevBtn">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    
+    <div class="slider-container">
+      <div class="filters-track" id="filtersTrack">
+        <a href="/listings/category/Trending" class="filter">
+          <div><i class="fa-solid fa-fire"></i></div>
+          <p>Trending</p>
+        </a>
+        <a href="/listings/category/Room" class="filter">
+          <div><i class="fa-solid fa-bed"></i></div>
+          <p>Rooms</p>
+        </a>
+        <a href="/listings/category/Iconic%20Cities" class="filter">
+          <div><i class="fa-solid fa-mountain-city"></i></div>
+          <p>Iconic Cities</p>
+        </a>
+        <a href="/listings/category/Mountains" class="filter">
+          <div><i class="fa-solid fa-mountain"></i></div>
+          <p>Mountains</p>
+        </a>
+        <a href="/listings/category/Castles" class="filter">
+          <div><i class="fa-brands fa-fort-awesome"></i></div>
+          <p>Castles</p>
+        </a>
+        <a href="/listings/category/Amazing%20Pool" class="filter">
+          <div><i class="fa-solid fa-person-swimming"></i></div>
+          <p>Amazing Pool</p>
+        </a>
+        <a href="/listings/category/Camping" class="filter">
+          <div><i class="fa-solid fa-campground"></i></div>
+          <p>Camping</p>
+        </a>
+        <a href="/listings/category/Farms" class="filter">
+          <div><i class="fa-solid fa-cow"></i></div>
+          <p>Farms</p>
+        </a>
+        <a href="/listings/category/Arctic" class="filter">
+          <div><i class="fa-solid fa-snowflake"></i></div>
+          <p>Arctic</p>
+        </a>
+        <a href="/listings/category/Domes" class="filter">
+          <div><i class="fa-solid fa-igloo"></i></div>
+          <p>Domes</p>
+        </a>
+        <a href="/listings/category/Boats" class="filter">
+          <div><i class="fa-solid fa-ship"></i></div>
+          <p>Boats</p>
+        </a>
+      </div>
+    </div>
+
+    <button class="slider-btn" id="nextBtn">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+  </div>
+
 </div>
+
 
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
 	<% for(let listing of allListings){ %>
@@ -85,15 +149,32 @@
 </div>
 
 <script>
-	let taxSwitch = document.getElementById("switchCheckDefault");
-	taxSwitch.addEventListener("click", () => {
-		let taxInfo = document.querySelectorAll(".tax-info");
-		for(info of taxInfo){
-			if(info.style.display !== "inline"){
-				info.style.display = "inline";
-			} else {
-				info.style.display = "none";
-			}
-		}
-	})
+  const track = document.getElementById('filtersTrack');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  
+  let scrollPosition = 0;
+  const scrollAmount = 300;
+
+  function updateButtons() {
+    const maxScroll = track.scrollWidth - track.parentElement.clientWidth;
+    prevBtn.disabled = scrollPosition <= 0;
+    nextBtn.disabled = scrollPosition >= maxScroll;
+  }
+
+  prevBtn.addEventListener('click', () => {
+    scrollPosition = Math.max(0, scrollPosition - scrollAmount);
+    track.style.transform = `translateX(-${scrollPosition}px)`;
+    updateButtons();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    const maxScroll = track.scrollWidth - track.parentElement.clientWidth;
+    scrollPosition = Math.min(maxScroll, scrollPosition + scrollAmount);
+    track.style.transform = `translateX(-${scrollPosition}px)`;
+    updateButtons();
+  });
+
+  window.addEventListener('resize', updateButtons);
+  updateButtons();
 </script>
